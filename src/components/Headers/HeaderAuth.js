@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import useDropdown from "../../contexts/hooks/useDropdown";
 import { useAuth } from "../../contexts/AuthContext";
-import IconWidget from "../Widget/icon_widget";
+import IconWidget from "../Icons/icon_widget";
 
-const Header = () => {
+const HeaderAuth = () => {
     const { isOpen, toggleDropdown, dropdownRef } = useDropdown();
-    const { logout, user } = useAuth();
+    const { logout } = useAuth();
 
     return (
         <>
@@ -76,14 +76,8 @@ const Header = () => {
                     </div>
                 </div>
             </nav>
-            <div className="fixed bottom-14 lg:bottom-10 right-2 lg:right-10 z-10 ">
-                <div className="bg-[#03c75a] p-3 lg:p-5 cursor-pointer rounded-full relative z-10">
-                    <IconWidget icon="SiNaver" className="text-sm lg:text-2xl text-white relative" />
-                </div>
-                <div className="absolute w-[7em] lg:w-24 bg-white shadow-md px-4 py-[0.3em] lg:py-3 right-3/4 text-left top-1/2 -translate-y-1/2  text-[0.7em] lg:text-sm rounded-s-full">1대1 문의</div>
-            </div>
         </>
     );
 }
 
-export default Header;
+export default HeaderAuth;

@@ -11,62 +11,63 @@ import { SiNaver } from 'react-icons/si';
 import { TbPigMoney } from 'react-icons/tb';
 import { TfiReload } from 'react-icons/tfi';
 
-const IconWidget = (props) => {
+const IconWidget = ({ icon, className }) => {
     let html = '';
 
-    switch (props.icon) {
+    switch (icon) {
         case "GoHomeFill":
-            html = <GoHomeFill className={props.className} />;
+            html = <GoHomeFill className={className} />;
             break;
         case "FaSearch":
-            html = <FaSearch className={props.className} />;
+            html = <FaSearch className={className} />;
             break;
         case "IoMdHelpCircleOutline":
-            html = <IoMdHelpCircleOutline className={props.className} />;
+            html = <IoMdHelpCircleOutline className={className} />;
             break;
         case "FaChevronRight":
-            html = <FaChevronRight className={props.className} />;
+            html = <FaChevronRight className={className} />;
             break;
         case "LiaGlobeSolid":
-            html = <LiaGlobeSolid className={props.className} />;
+            html = <LiaGlobeSolid className={className} />;
             break;
         case "GoGear":
-            html = <GoGear className={props.className} />;
+            html = <GoGear className={className} />;
             break;
         case "GoThumbsup":
-            html = <GoThumbsup className={props.className} />;
+            html = <GoThumbsup className={className} />;
             break;
         case "GoZap":
-            html = <GoZap className={props.className} />;
+            html = <GoZap className={className} />;
             break;
         case "FaUser":
-            html = <FaUser className={props.className} />;
+            html = <FaUser className={className} />;
             break;
         case "GoSignOut":
-            html = <GoSignOut className={props.className} />;
+            html = <GoSignOut className={className} />;
             break;
         case "FiAlertCircle":
-            html = <FiAlertCircle className={props.className} />;
+            html = <FiAlertCircle className={className} />;
             break;
         case "RiMoneyDollarCircleFill":
-            html = <RiMoneyDollarCircleFill className={props.className} />;
+            html = <RiMoneyDollarCircleFill className={className} />;
             break;
         case "FaMoneyBillTrendUp":
-            html = <FaMoneyBillTrendUp className={props.className} />;
+            html = <FaMoneyBillTrendUp className={className} />;
             break;
         case "TbPigMoney":
-            html = <TbPigMoney className={props.className} />;
+            html = <TbPigMoney className={className} />;
             break;
         case "BsChatDots":
-            html = <BsChatDots className={props.className} />;
+            html = <BsChatDots className={className} />;
             break;
         case "SiNaver":
-            html = <SiNaver className={props.className} />;
+            html = <SiNaver className={className} />;
             break;
         case "TfiReload":
-            html = <TfiReload className={props.className} />;
+            html = <TfiReload className={className} />;
             break;
-
+        default:
+            break;
     }
 
     return html;

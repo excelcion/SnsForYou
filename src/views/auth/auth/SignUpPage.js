@@ -1,9 +1,9 @@
 // LoginPage.js
 import { Link, useNavigate } from "react-router-dom";
-import { useTheme } from "../../contexts/hooks/useTheme";
-import { useForm } from "../../contexts/hooks/useForm";
+import { useTheme } from "../../../contexts/hooks/useTheme";
+import { useForm } from "../../../contexts/hooks/useForm";
 import Layout from "./components/Layout";
-import SignLogo from "../../components/Logo/SignLogo";
+import SignLogo from "../../../components/Logo/SignLogo";
 import InputField from "./components/InputField";
 
 const SignUpPage = () => {

@@ -1,22 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-import Header from '../../components/PageLayout/Header';
-import Sidebar from '../../components/PageLayout/Sideber';
-import Footer from '../../components/PageLayout/Footer';
-
-import { useSidebar } from "../../contexts/hooks/useSidebar";
-import IconWidget from "../../components/Widget/icon_widget";
+import IconWidget from "../../../components/Icons/icon_widget";
 
 const Faq = () => {
-  const { sidebarOpen, toggleSidebarOpen } = useSidebar();
-
-  const [originList, setOriginList] = useState([
+  const [originList] = useState([
     { id: 1, title: '취소,환불,AS' },
     { id: 2, title: 'SNS 포유 서비스' },
     { id: 3, title: '인스타그램' },
   ]);
 
-  const [list, setList] = useState([
+  const [list] = useState([
     {
       id: 11,
       title: "주문 취소 가능한가요?",
@@ -181,159 +174,150 @@ const Faq = () => {
     },
   ]);
 
-  const [ isOpen, setIsOpen ] = useState(originList !== null ? 'all' : null);
+  const [isOpen, setIsOpen] = useState(originList !== null ? 'all' : null);
 
-  const [ isViewOpen, setIsViewOpen ] = useState(list !== null ? list[0].id : null);
+  const [isViewOpen, setIsViewOpen] = useState(list !== null ? list[0].id : null);
 
 
   const toggleOpen = (e) => {
-    setIsOpen((prev) => prev == e ? null : e);
+    setIsOpen((prev) => prev === e ? null : e);
   }
 
   const toggleViewOpen = (e) => {
-    setIsViewOpen((prev) => e );
+    setIsViewOpen((prev) => e);
   }
 
   return (
-    <div className="bg-[#F5F5F5]">
-      <Header />
-      <main className="flex pt-[4.5em] overflow-hidden min-h-screen">
-        <Sidebar isOpen={sidebarOpen} toggleOpen={toggleSidebarOpen} />
-        <div id="main-content" className={`relative w-full h-full overflow-y-auto transition-width duration-200 ${sidebarOpen ? "lg:ml-14" : "lg:ml-64"}`}>
-          <main className="min-h-screen grid grid-cols-1 gap-2 lg:gap-5 px-2 lg:px-5">
-            <section className="lg:col-span-1">
+    <main className="min-h-screen grid grid-cols-1 gap-2 lg:gap-5 px-2 lg:px-5">
+      <section className="lg:col-span-1">
 
-              <div className="flex flex-col bg-white rounded-2xl p-3 lg:p-5 mb-5 h-full">
+        <div className="flex flex-col bg-white rounded-2xl p-3 lg:p-5 mb-5 h-full">
 
-                <div className="flex lg:items-center justify-between flex-col lg:flex-row">
-                  <h3 className="font-bold">
-                    자주 묻는 질문
-                  </h3>
-                  <div className="relative w-60 mt-2 lg:mt-0">
-                    <IconWidget icon="FaSearch" className=" text-sm absolute fill-gray-500 top-1/2 left-3 -translate-y-1/2" />
-                    <input type="text" placeholder="질문을 입력해주세요." className="bg-gray-100 w-full pl-8 py-2 rounded-lg border text-sm" />
+          <div className="flex lg:items-center justify-between flex-col lg:flex-row">
+            <h3 className="font-bold">
+              자주 묻는 질문
+            </h3>
+            <div className="relative w-60 mt-2 lg:mt-0">
+              <IconWidget icon="FaSearch" className=" text-sm absolute fill-gray-500 top-1/2 left-3 -translate-y-1/2" />
+              <input type="text" placeholder="질문을 입력해주세요." className="bg-gray-100 w-full pl-8 py-2 rounded-lg border text-sm" />
+            </div>
+          </div>
+
+          <div className="flex flex-col-reverse lg:grid grid-cols-3  lg:grid-cols-4 gap-0 border mt-5 ">
+
+            <div className="col-span-3 lg:col-span-1 border-r bg-[#f4f7ff] ">
+              <ul className="p-4 h-[50em] overflow-y-auto">
+                <li>
+                  <div onClick={() => toggleOpen('all')} className="flex items-center justify-between p-4 rounded-lg cursor-pointer hover:bg-[#e1e6f3]" >
+                    <span className={`text-sm ${isOpen === 'all' ? 'text-main-900 font-bold' : 'text-gray-900'}`}>전체 보기</span>
+                    <IconWidget icon="FaChevronRight" className={`text-sm ${isOpen === 'all' ? 'fill-main-900 -rotate-90' : 'text-gray-900 rotate-90'}`} />
                   </div>
-                </div>
-
-                <div className="flex flex-col-reverse lg:grid grid-cols-3  lg:grid-cols-4 gap-0 border mt-5 ">
-
-                  <div className="col-span-3 lg:col-span-1 border-r bg-[#f4f7ff] ">
-                    <ul className="p-4 h-[50em] overflow-y-auto">
-                      <li>
-                        <div onClick={() => toggleOpen('all')} className="flex items-center justify-between p-4 rounded-lg cursor-pointer hover:bg-[#e1e6f3]" >
-                          <span className={`text-sm ${isOpen === 'all' ? 'text-main-900 font-bold' : 'text-gray-900'}`}>전체 보기</span>
-                          <IconWidget icon="FaChevronRight" className={`text-sm ${isOpen === 'all' ? 'fill-main-900 -rotate-90' : 'text-gray-900 rotate-90'}`} />
-                        </div>
-                        <ul className={isOpen === 'all' ? 'h-auto' : 'h-0 overflow-hidden'}>
-                          {
-                            list.map((j, i) => {
-                              return (
-                                <li key={i} onClick={() => toggleViewOpen(j.id)} className="flex items-center px-5 py-3 rounded-lg cursor-pointer hover:bg-[#e1e6f3]">
-                                  <div className={`w-2 h-2 rounded-full ${isViewOpen === j.id ? 'bg-main-900' : 'bg-gray-300'}`}></div>
-                                  <p className={`text-sm ml-2 text-gray-700 font-bold truncate ${isViewOpen === j.id ? 'text-main-900 font-bold' : 'text-gray-900'}`} >{j.title}</p>
-                                </li>
-                              )
-                            })
-                          }
-                        </ul>
-                      </li>
-                      {
-                        originList.map((e, i) => (
-                          <li key={e.id}>
-                            <div onClick={() => toggleOpen(e.id)} className="flex items-center justify-between p-4 rounded-lg cursor-pointer hover:bg-[#e1e6f3]" >
-                              <span className={`text-sm truncate ${isOpen === e.id ? 'text-main-900 font-bold' : 'text-gray-900'}`} >{e.title}</span>
-                              <IconWidget icon="FaChevronRight" className={`text-sm ${isOpen === e.id ? 'fill-main-900 -rotate-90' : 'text-gray-900 rotate-90'}`} />
-                            </div>
-                            <ul className={isOpen === e.id ? 'h-auto' : 'h-0 overflow-hidden'}>
-                              {
-                                list.filter((jo) => {
-                                  return jo.origin == e.id;
-                                }).map((j, ji) => {
-                                  return (
-                                    <li key={ji} onClick={() => toggleViewOpen(j.id)} className="flex items-center px-5 py-3 rounded-lg cursor-pointer hover:bg-[#e1e6f3]">
-                                      <div className={`w-2 h-2 rounded-full ${isViewOpen ===  j.id ? 'bg-main-900' : 'bg-gray-300'}`}></div>
-                                      <p className={`text-sm ml-2 text-gray-700 font-bold truncate ${isViewOpen === j.id ? 'text-main-900 font-bold' : 'text-gray-900'}`} >{j.title}</p>
-                                    </li>
-                                  )
-                                })
-                              }
-
-                            </ul>
+                  <ul className={isOpen === 'all' ? 'h-auto' : 'h-0 overflow-hidden'}>
+                    {
+                      list.map((j, i) => {
+                        return (
+                          <li key={i} onClick={() => toggleViewOpen(j.id)} className="flex items-center px-5 py-3 rounded-lg cursor-pointer hover:bg-[#e1e6f3]">
+                            <div className={`w-2 h-2 rounded-full ${isViewOpen === j.id ? 'bg-main-900' : 'bg-gray-300'}`}></div>
+                            <p className={`text-sm ml-2 text-gray-700 font-bold truncate ${isViewOpen === j.id ? 'text-main-900 font-bold' : 'text-gray-900'}`} >{j.title}</p>
                           </li>
-                        ))
-                      }
-
-                    </ul>
-                  </div>
-
-                  <div className="col-span-3 px-5 py-6">
-                    <div className=" max-w-2xl mx-auto">
-                      <div>
-
-                        <p
-                          style={{
-                            textAlign: "center",
-                          }}>
-                          <span
-                            style={{
-                              fontSize: "24px",
-                            }}>
-                            <span
-                              style={{
-                                color: "rgb(0, 0, 0)",
-                                fontFamily: "Arial",
-                              }}>
-                              <strong>{list.find((e) => e.id == isViewOpen)?.title}</strong>
-                            </span>
-                          </span>
-                        </p>
-
-                        <p
-                          style={{
-                            textAlign: "center",
-                          }}>
-                          <span
-                            style={{
-                              color: "rgb(0, 0, 0)",
-                              fontFamily: "Arial",
-                              fontSize: "18px",
-                            }}>
-                            <strong>
-                              <br />
-                            </strong>
-                          </span>
-                        </p>
-                        
-                        <div>
-                          <span
-                            style={{
-                              color: "rgb(53, 53, 53)",
-                            }}>
-                            <span
-                              style={{
-                                backgroundColor: "rgb(249, 249, 249)",
-                                color: "rgb(0, 0, 0)",
-                                fontSize: "14px",
-                              }}>
-                              <br />
-                            </span>
-                            {list.find((e) => e.id == isViewOpen)?.body}
-                          </span>
-                        </div>
-                        
+                        )
+                      })
+                    }
+                  </ul>
+                </li>
+                {
+                  originList.map((e, i) => (
+                    <li key={e.id}>
+                      <div onClick={() => toggleOpen(e.id)} className="flex items-center justify-between p-4 rounded-lg cursor-pointer hover:bg-[#e1e6f3]" >
+                        <span className={`text-sm truncate ${isOpen === e.id ? 'text-main-900 font-bold' : 'text-gray-900'}`} >{e.title}</span>
+                        <IconWidget icon="FaChevronRight" className={`text-sm ${isOpen === e.id ? 'fill-main-900 -rotate-90' : 'text-gray-900 rotate-90'}`} />
                       </div>
-                    </div>
+                      <ul className={isOpen === e.id ? 'h-auto' : 'h-0 overflow-hidden'}>
+                        {
+                          list.filter((jo) => {
+                            return jo.origin === e.id;
+                          }).map((j, ji) => {
+                            return (
+                              <li key={ji} onClick={() => toggleViewOpen(j.id)} className="flex items-center px-5 py-3 rounded-lg cursor-pointer hover:bg-[#e1e6f3]">
+                                <div className={`w-2 h-2 rounded-full ${isViewOpen === j.id ? 'bg-main-900' : 'bg-gray-300'}`}></div>
+                                <p className={`text-sm ml-2 text-gray-700 font-bold truncate ${isViewOpen === j.id ? 'text-main-900 font-bold' : 'text-gray-900'}`} >{j.title}</p>
+                              </li>
+                            )
+                          })
+                        }
+
+                      </ul>
+                    </li>
+                  ))
+                }
+
+              </ul>
+            </div>
+
+            <div className="col-span-3 px-5 py-6">
+              <div className=" max-w-2xl mx-auto">
+                <div>
+
+                  <p
+                    style={{
+                      textAlign: "center",
+                    }}>
+                    <span
+                      style={{
+                        fontSize: "24px",
+                      }}>
+                      <span
+                        style={{
+                          color: "rgb(0, 0, 0)",
+                          fontFamily: "Arial",
+                        }}>
+                        <strong>{list.find((e) => e.id === isViewOpen)?.title}</strong>
+                      </span>
+                    </span>
+                  </p>
+
+                  <p
+                    style={{
+                      textAlign: "center",
+                    }}>
+                    <span
+                      style={{
+                        color: "rgb(0, 0, 0)",
+                        fontFamily: "Arial",
+                        fontSize: "18px",
+                      }}>
+                      <strong>
+                        <br />
+                      </strong>
+                    </span>
+                  </p>
+
+                  <div>
+                    <span
+                      style={{
+                        color: "rgb(53, 53, 53)",
+                      }}>
+                      <span
+                        style={{
+                          backgroundColor: "rgb(249, 249, 249)",
+                          color: "rgb(0, 0, 0)",
+                          fontSize: "14px",
+                        }}>
+                        <br />
+                      </span>
+                      {list.find((e) => e.id === isViewOpen)?.body}
+                    </span>
                   </div>
 
                 </div>
               </div>
+            </div>
 
-            </section>
-          </main>
-          <Footer />
+          </div>
         </div>
-      </main>
-    </div>
+
+      </section>
+    </main>
   );
 };
 

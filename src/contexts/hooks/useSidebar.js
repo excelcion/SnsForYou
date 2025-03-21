@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 export const useSidebar = () => {
     const [sidebarOpen, setSidebarOpen] = useState(() => {
         const savedTheme = localStorage.getItem("sidebar");
-        return savedTheme == 'true' ? true : false;
+        return savedTheme === 'true' ? true : false;
     });
 
     useEffect(() => {
