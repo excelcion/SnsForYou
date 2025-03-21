@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/SnsMark/static/css/main.fee402c1.css",
+    "main.js": "/SnsMark/static/js/main.07e08df2.js",
+    "static/js/488.dcb5c261.chunk.js": "/SnsMark/static/js/488.dcb5c261.chunk.js",
+    "index.html": "/SnsMark/index.html",
+    "main.fee402c1.css.map": "/SnsMark/static/css/main.fee402c1.css.map",
+    "main.07e08df2.js.map": "/SnsMark/static/js/main.07e08df2.js.map",
+    "488.dcb5c261.chunk.js.map": "/SnsMark/static/js/488.dcb5c261.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fee402c1.css",
+    "static/js/main.07e08df2.js"
+  ]
+}
