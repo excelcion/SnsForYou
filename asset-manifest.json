@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/SnsForYou/static/css/main.9d3380c3.css",
-    "main.js": "/SnsForYou/static/js/main.f0449fca.js",
+    "main.js": "/SnsForYou/static/js/main.1d70ff4a.js",
     "static/js/488.dcb5c261.chunk.js": "/SnsForYou/static/js/488.dcb5c261.chunk.js",
     "index.html": "/SnsForYou/index.html",
     "main.9d3380c3.css.map": "/SnsForYou/static/css/main.9d3380c3.css.map",
-    "main.f0449fca.js.map": "/SnsForYou/static/js/main.f0449fca.js.map",
+    "main.1d70ff4a.js.map": "/SnsForYou/static/js/main.1d70ff4a.js.map",
     "488.dcb5c261.chunk.js.map": "/SnsForYou/static/js/488.dcb5c261.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9d3380c3.css",
-    "static/js/main.f0449fca.js"
+    "static/js/main.1d70ff4a.js"
   ]
 }
